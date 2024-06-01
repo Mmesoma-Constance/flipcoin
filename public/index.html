@@ -1,0 +1,200 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess My Number Game</title>
+    <link rel="stylesheet" href="output.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .intro-container {
+        text-align: center;
+      }
+
+      .game-rules {
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      @keyframes moveUp {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-50px);
+        }
+      }
+
+      .animate-up {
+        animation: moveUp 1s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .fadeIn {
+        animation: fadeIn 1s ease forwards;
+      }
+    </style>
+
+    <!-- <script>
+      soundManager.setup({
+        url: "path/to/swf-files",
+        flashVersion: 9,
+        useFlash: true,
+      });
+    </script> -->
+  </head>
+  <body class="bg-black text-white font-mono">
+    <div class="relative">
+      <img
+        src="sound/images (2).jpeg"
+        alt=""
+        class="w-full h-screen object-fit"
+      />
+    </div>
+    <div
+      class="absolute z-10 text-white w-full h-screen bg-opacity-50 bg-black"
+    >
+      <!-------- <audio id="startingAudio">
+        <source
+          src="sound/Guess Game starting sound.mp3"
+          type="audio/mp3"
+          loop
+        />
+      </audio>--->
+      <div class="intro-container mt-20">
+        <div class="intro-text" id="introText">
+          <h1 class="font-extrabold" style="font-size: 27px">Flip Coin Game</h1>
+        </div>
+        <div class="game-rules text-lg" id="gameRules">
+          <p class="text-lg font-semibold underline">Game Rules</p>
+          <ul class="flex flex-col gap-4 mx-5 justify-center text-center">
+            <li class="text-sm text-left md:text-center">
+              <span class="font-bold uppercase">Objective : </span>
+              <span class="" style="font-size: 13px"
+                >The objective of the game is to make accurate predictions and
+                accumulate coins.
+              </span>
+            </li>
+            <li class="text-sm text-left md:text-center">
+              <span class="font-bold uppercase">Gameplay : </span>
+              <span class="" style="font-size: 13px"
+                >- Player begins with five coins.
+              </span>
+              <br />
+              <span class="" style="font-size: 13px"
+                >- You predict the outcome of a coin flip (heads or tails).
+              </span>
+              <br />
+              <span class="" style="font-size: 13px"
+                >- If your prediction is correct, you gain 2 coins.
+              </span>
+              <br />
+              <span class="" style="font-size: 13px"
+                >- After three consecutive correct guesses, you receive an
+                additional 5 coins.
+              </span>
+              <br />
+
+              <span class="" style="font-size: 13px"
+                >- If your prediction is incorrect, you lose 2 coins.
+              </span>
+              <br />
+              <span class="" style="font-size: 13px"
+                >- Clicking the "End Game" button clears all accumulated coins,
+                requiring you to start with the initial 5 coins.
+              </span>
+            </li>
+
+            <li class="text-sm text-left md:text-center">
+              <span class="font-bold uppercase">HighStake coin : </span>
+              <span class="" style="font-size: 13px">
+                - When you accumulates 10 coins or more, you have the option to
+                stake 10 coins. <br />
+                - Successfully guessing the next flip earns the you 25 coins.
+                <br />
+                - Failure to guess correctly results in the loss of the staked
+                10 coins. <br />
+              </span>
+            </li>
+
+            <li class="text-sm text-left md:text-center">
+              <span class="font-bold uppercase">Winnig : </span>
+              <span class="" style="font-size: 13px"
+                >You need to accumulate 40 coins to win the game and earn a
+                Bronze Coin.
+              </span>
+            </li>
+            <li class="text-sm text-left md:text-center">
+              <span class="font-bold uppercase">THE Bronze Coin : </span>
+              <span class="" style="font-size: 13px"
+                >The Bronze Coin can be used at any point in the game to
+                increase the your coins by 10.
+              </span>
+            </li>
+
+            <li class="text-sm text-left md:text-center">
+              <span class="font-bold uppercase">Have Fun : </span>
+              <span class="" style="font-size: 13px"
+                >Have fun flipping the coin and see how far you can go in the
+                game!
+              </span>
+            </li>
+          </ul>
+          <div class="mt-5">
+            <a href="flipCoin.html"
+              ><button id="playButton" class="w-44 text-center text-base">
+                Play
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //  soundManager.play("sound", "Guess Game starting sound.mp3");
+      // let startingAudio = document.getElementById("startingAudio");
+      // startingAudio.play();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          var introText = document.getElementById("introText");
+          var gameRules = document.getElementById("gameRules");
+
+          introText.classList.add("hide");
+
+          introText.classList.add("animate-up");
+
+          setTimeout(function () {
+            gameRules.style.display = "block";
+            gameRules.classList.add("fadeIn");
+          }, 500); // Adjust timing if needed
+        }, 1000); // Adjust timing if needed
+      });
+    </script>
+  </body>
+</html>

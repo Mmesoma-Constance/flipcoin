@@ -1,0 +1,165 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css" />
+    <style>
+        .coin {
+          width: 100px;
+          height: 100px;
+          background-color: #f4d142;
+          border-radius: 50%;
+          border: 2px solid #c8a112;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 24px;
+          font-weight: bold;
+          color: #333;
+          
+          cursor: pointer; /* Add cursor pointer for better UX */
+        }
+
+        .coin2 {
+          width: 26px;
+          height: 26px;
+          background-color: #f4d142;
+          border-radius: 50%;
+          border: 2px solid #c8a112;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        
+          font-weight: bold;
+          color: #333;
+          
+          cursor: pointer; /* Add cursor pointer for better UX */
+        }
+
+        .bronzeCoinColor {
+          width: 26px;
+          height: 26px;
+          background-color: #cd7f32;
+          border-radius: 50%;
+          border: 2px solid #c8a112;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        
+          font-weight: bold;
+          color: #333;
+          
+          cursor: pointer; /* Add cursor pointer for better UX */
+        }
+      
+        @keyframes flip {
+          0% {
+            transform: rotateX(0deg);
+          }
+          50% {
+            transform: rotateX(180deg);
+          }
+          100% {
+            transform: rotateX(360deg);
+          }
+        }
+      </style>
+      </head>
+      <body class="bg-black text-white font-mono">
+     
+        <div class="flex flex-row justify-between gap-4 items-start w-full h-fit">
+
+          <div class="">
+
+            <button id="playAgain" class=" bg-white text-black p-2 my-3 ml-2">Start Game</button>
+            
+          
+<span class="left-4">
+  <h4 class="text-sm tracking-wide pl-4"> Wins: <span class="wins"></span></h4>
+  <h4 class="text-sm tracking-wide pl-4"> Losses: <span class="losses"></span></h4>
+</span>
+           
+
+          </div>
+
+           
+    <div class="flex flex-row gap-1 top-2 pt-2 justify-center left-28">
+      <h4> <span class="points text-lg">5</span></h4> <div class="coin2 text-sm">$</div>
+      
+  </div>
+
+        
+  <div class="right-0 flex flex-col items-end justify-end pr-3 top-2">
+
+    
+    <div id="bronzeCoinText">
+     <button id="bronzeCoinBtn" class="flex flex-row gap-1 items-center pt-3">
+       <span id="bronzeCoin"></span> <div class="bronzeCoinColor text-sm">$</div>
+     </button>
+  </div>
+   
+ 
+    
+    <button id="highStake" class="text-xs tracking-wide pt-2"> HighStake coin: <span class="highStakeText"></span></button> 
+   <h4 class="text-xs tracking-wide pt-1"> ConsecutiveWins: <span class="consecutiveWinsText"></span></h4>
+   
+  </div>
+
+        </div>
+
+     
+        <audio id="overAudio">
+          <source src="sound/Guess Game over sound.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="victoryAudio">
+          <source src="sound/Guess Game medium victory sound .mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="consecutiveWinsAudio">
+          <source src="sound/Flip Coin 3row sound .mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="flippingAudio">
+          <source src="sound/Flip Coin flipping sound.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="stakedAudio">
+          <source src="sound/Flip Coin stake sound.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="errorAudio">
+          <source src="sound/Guess Game error sound.mp3" type="audio/mp3" />
+        </audio>
+
+
+        <div class="flex flex-col justify-center mx-auto items-center mt-10">
+          <div class="text-lg pb-3">Click the coin to flip it</div>
+          <button class="coin" id="coin">?</button>
+
+
+   <h1 id="gameOver" style="display: none;"></h1>
+          <p class="bronzeWin"></p>
+
+      <div class="">
+        <button id="head" class="btn confettiButton bg-white px-4 text-black p-2 m-3">Head</button>
+        <button id="tail" class="btn confettiButton bg-white px-4 text-black p-2 m-3">Tail</button>
+      </div>
+
+      <br>
+      <button id="endGame" class=" bg-white px-6 text-black p-2 m-3">End Game</button> <br>
+      
+        </div>
+       
+
+        <div id="snackbar" class="flex justify-center items-center mx-auto" style="display: none;">
+          <span id="snackbarText" class="bg-gray-500 bg-opacity-80 p-2 px-6 w-fit bottom-0 fixed z-10 my-10 text-sm">10 Coin staked!</span>
+        </div>
+     
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.1"></script>
+      <script src="index.js"></script>
+</html>

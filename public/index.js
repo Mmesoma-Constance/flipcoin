@@ -20,7 +20,7 @@ const lossText = document.querySelector(".losses");
 lossText.textContent = losses;
 
 let coinFace;
-console.log(coinFace);
+// // console.log(coinFace);
 let buttonValue;
 
 let coinPoints = 5;
@@ -61,6 +61,42 @@ function stakingUpdate() {
 stakingUpdate();
 
 function winning() {
+  if (coinPoints < 1) {
+    coinPoints = 0;
+    points.textContent = coinPoints;
+    document.getElementById("gameOver").style.display = "block";
+    document.getElementById("coin").textContent = coinFace;
+
+    document.getElementById("gameOver").textContent = "YOU LOST, GAME OVER!";
+    losses++;
+    lossText.textContent = losses;
+
+    stakingUpdate();
+
+    document.body.style.backgroundColor = "#FF0000";
+    let overAudio = document.getElementById("overAudio");
+    overAudio.play();
+
+    playAgainBtn.textContent = "Start Over";
+
+    document.getElementById("coin").style.opacity = "80%";
+
+    document.getElementById("coin").disabled = true;
+    document.getElementById("head").disabled = true;
+    document.getElementById("tail").disabled = true;
+
+    document.querySelectorAll(".btn").forEach((e) => {
+      e.style.opacity = "60%";
+    });
+
+    gamePlay = false;
+    playAgainBtn.disabled = false;
+    playAgainBtn.style.backgroundColor = "white";
+    playAgainBtn.style.opacity = "100%";
+    endGame.disabled = true;
+    endGame.style.opacity = "60%";
+  }
+
   if (coinPoints >= 40) {
     document.getElementById("gameOver").style.display = "block";
     document.getElementById("coin").textContent = coinFace;
@@ -123,13 +159,13 @@ document
 
       localStorage.setItem("bronzeCoin", JSON.stringify(bronzeCoin));
 
-      console.log("bronze clicked");
+      //  // console.log("bronze clicked");
 
       stakingUpdate();
 
       winning();
     } else {
-      console.log("bronze not clicked");
+      // console.log("bronze not clicked");
     }
   });
 
@@ -262,42 +298,6 @@ document.querySelectorAll(".btn").forEach((button) => {
     //   document.querySelector(".highStakeText").textContent = highStakeText;
     // }
 
-    if (coinPoints < 1) {
-      coinPoints = 0;
-      points.textContent = coinPoints;
-      document.getElementById("gameOver").style.display = "block";
-      document.getElementById("coin").textContent = coinFace;
-
-      document.getElementById("gameOver").textContent = "YOU LOST, GAME OVER!";
-      losses++;
-      lossText.textContent = losses;
-
-      stakingUpdate();
-
-      document.body.style.backgroundColor = "#FF0000";
-      let overAudio = document.getElementById("overAudio");
-      overAudio.play();
-
-      playAgainBtn.textContent = "Start Over";
-
-      document.getElementById("coin").style.opacity = "80%";
-
-      document.getElementById("coin").disabled = true;
-      document.getElementById("head").disabled = true;
-      document.getElementById("tail").disabled = true;
-
-      document.querySelectorAll(".btn").forEach((e) => {
-        e.style.opacity = "60%";
-      });
-
-      gamePlay = false;
-      playAgainBtn.disabled = false;
-      playAgainBtn.style.backgroundColor = "white";
-      playAgainBtn.style.opacity = "100%";
-      endGame.disabled = true;
-      endGame.style.opacity = "60%";
-    }
-
     // if (coinPoints >= 40) {
     //   document.getElementById("gameOver").style.display = "block";
     //   document.getElementById("coin").textContent = coinFace;
@@ -342,6 +342,7 @@ document.querySelectorAll(".btn").forEach((button) => {
 document.getElementById("highStake").addEventListener("click", function () {
   stakedCoin = false;
   stakeClick = true;
+  winning();
 
   if (highStakeText === 1) {
     highStake.disabled = true;
@@ -357,7 +358,7 @@ document.getElementById("highStake").addEventListener("click", function () {
     let stake = 10;
     coinPoints -= stake;
     points.textContent = coinPoints;
-    console.log("staked");
+    // console.log("staked");
 
     highStakeText = 0;
     document.querySelector(".highStakeText").textContent = highStakeText;
@@ -434,7 +435,7 @@ document.getElementById("coin").addEventListener("click", function () {
     } else {
       coinFace = "Tail";
     }
-    console.log(coinFace);
+    // console.log(coinFace);
     setTimeout(function () {
       document.getElementById("coin").style.animation = "none";
     }, 500); // Stop animation after 10 seconds
@@ -477,7 +478,7 @@ function resetGame() {
     playAgainBtn.textContent = "Start Over";
 
     coinFace = null;
-    console.log(coinFace);
+    // console.log(coinFace);
 
     coinPoints = 5;
     points.textContent = coinPoints;

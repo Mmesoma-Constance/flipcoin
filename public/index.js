@@ -20,7 +20,7 @@ const lossText = document.querySelector(".losses");
 lossText.textContent = losses;
 
 let coinFace;
-// // console.log(coinFace);
+console.log(coinFace);
 let buttonValue;
 
 let coinPoints = 5;
@@ -241,6 +241,7 @@ playAgainBtn.addEventListener("click", function () {
 // HEAD/TAIL BUTTON FUNCTIONALITY
 document.querySelectorAll(".btn").forEach((button) => {
   button.addEventListener("click", function () {
+    winning();
     // stakedCoin = false;
 
     document.getElementById("head").disabled = true;
@@ -250,7 +251,6 @@ document.querySelectorAll(".btn").forEach((button) => {
       e.style.opacity = "60%";
     });
 
-    winning();
     document.getElementById("coin").textContent = coinFace;
 
     if (coinPoints < 40 && coinPoints === 0) {
@@ -275,6 +275,7 @@ document.querySelectorAll(".btn").forEach((button) => {
       document.querySelector(".consecutiveWinsText").textContent =
         consecutiveWins;
     }
+    winning();
 
     if (consecutiveWins === 3) {
       coinPoints += 7 - 2;
@@ -435,7 +436,7 @@ document.getElementById("coin").addEventListener("click", function () {
     } else {
       coinFace = "Tail";
     }
-    // console.log(coinFace);
+    console.log(coinFace);
     setTimeout(function () {
       document.getElementById("coin").style.animation = "none";
     }, 500); // Stop animation after 10 seconds

@@ -2,72 +2,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Flip Coin Game</title>
     <link rel="stylesheet" href="output.css" />
-    <style>
-        .coin {
-          width: 120px;
-          height: 120px;
-          background-color: #f4d142;
-          border-radius: 50%;
-          border: 2px solid #c8a112;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 24px;
-          font-weight: bold;
-          color: #333;
-          
-          cursor: pointer; /* Add cursor pointer for better UX */
-        }
-
-        .coin2 {
-          width: 22px;
-          height: 22px;
-          background-color: #f4d142;
-          border-radius: 50%;
-          border: 2px solid #c8a112;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        
-          font-weight: bold;
-          color: #333;
-          
-          cursor: pointer; /* Add cursor pointer for better UX */
-        }
-
-        .bronzeCoinColor {
-          width: 22px;
-          height: 22px;
-          background-color: #cd7f32;
-          border-radius: 50%;
-          border: 2px solid #c8a112;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        
-          font-weight: bold;
-          color: #333;
-          
-          cursor: pointer; /* Add cursor pointer for better UX */
-        }
-      
-        @keyframes flip {
-          0% {
-            transform: rotateX(0deg);
-          }
-          50% {
-            transform: rotateX(180deg);
-          }
-          100% {
-            transform: rotateX(360deg);
-          }
-        }
-      </style>
+   <link rel="stylesheet" href="flipcoin.css">
       </head>
       <body class="bg-black text-white font-mono">
      
@@ -75,7 +12,7 @@
 
           <div class="">
 
-            <button id="playAgain" class=" bg-white text-black p-2 px-3 my-3 ml-2 text-sm">Start Game</button>
+            <button id="playAgain" class=" bg-white text-black p-2 px-3 my-3 ml-2 text-sm w-28">Start Game</button>
             
           
 <span class="left-4">
@@ -104,8 +41,8 @@
    
  
     
-    <button id="highStake" class="text-xs tracking-wide pt-2"> HighStake coin: <span class="highStakeText"></span></button> 
-   <h4 class="text-xs tracking-wide pt-1"> ConsecutiveWins: <span class="consecutiveWinsText"></span></h4>
+    <button id="highStake" class="text-xs tracking-wide pt-3"> HighStake coin: <span class="highStakeText"></span></button> 
+   <h4 class="text-xs tracking-wide pt-2"> ConsecutiveWins: <span class="consecutiveWinsText"></span></h4>
    
   </div>
 
@@ -136,11 +73,18 @@
           <source src="sound/Guess Game error sound.mp3" type="audio/mp3" />
         </audio>
 
-
+       
+          
+     
         <div class="flex flex-col justify-center mx-auto items-center mt-16">
-          <div class="text-lg pb-3">Click the coin to flip it</div>
-          <button class="coin mt-2" id="coin">?</button>
+          <div class="text-lg ">Click the coin to flip it</div>
+          <span class="font-extrabold text-xs" id="introText" style="opacity: 0%;">+2</span>
+          <button class="coin mt-2" id="coin">
+          
+           <span>?</span>
+          </button>
 
+          
 
    <h1 id="gameOver" style="display: none;"></h1>
           <p class="bronzeWin"></p>
